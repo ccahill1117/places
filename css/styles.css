@@ -1,0 +1,12 @@
+
+.map {
+  /* display: none; */
+ width: 1000px;
+ position: absolute;
+ top: 60px;
+}
+
+#usa-map {
+  width: 100%;
+
+}
