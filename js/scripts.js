@@ -9,6 +9,7 @@ function Place (name, location) {
     // this.timeOfYear = timeOfYear,
     // this.notes = notes
     console.log('new place added!')
+    console.log(record)
 }
 
 function ScrapBook() {
@@ -27,37 +28,40 @@ ScrapBook.prototype.assignId = function() {
 
 
 $(function() {
-
-  // $("#myModal").click(function() {
-  //   $("#exampleModal").modal();
-  // })
+  $("#test").click(function(event) {
+    $("#addLocation").on( "click" , function() {console.log('added')});
+  });
 
 
   $("#usa-map").click(function(event) {
 
-    console.log(event.clientX, event.clientY)
-
-    var range = 13;
-    var oregonX = 118 ;
-    var oregonY = 243;
-
     var capturedCoords = {x: event.clientX, y:event.clientY};
-    console.log(capturedCoords)
+    var range = 13;
+    // var oregonX = 118 ;
+    // var oregonY = 243;
 
-    record.push(new Place('test', capturedCoords));
-    // debugger;
+    // console.log(capturedCoords)
 
-    if (event.clientX > oregonX - range &&  event.clientX < oregonX + range && event.clientY > oregonY - range &&  event.clientY < oregonY + range) {
-      // var coords = {event.clientX, event.clientY};
+    // $("#map-coords").text(modalText);
+    $("#exampleModal").modal();
 
-      // $("#map-coords").text("you clicked "event.clientX, event.clientY);
-      var modalText = "You clicked: " + event.clientX + " " + event.clientY;
+    $("#addLocation").click(function() {
+      $("#place-name").val("");
 
-      $("#map-coords").text(modalText);
-      $("#exampleModal").modal();
+      var newPlace = $("#place-name").val()
+      console.log(newPlace)
 
-      console.log('oregon')
-    }
+      record.push(new Place(newPlace, capturedCoords));
+      $("#addLocation").off( "click" );
+
+
+    });
+
+
+
+
+
+    // if (event.clientX > oregonX - range &&  event.clientX < oregonX + range && event.clientY > oregonY - range &&  event.clientY < oregonY + range)
   })
 
 })

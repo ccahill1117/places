@@ -15,6 +15,7 @@
   <body>
 
     <div class="top">
+      <p id="test">test</p>
       <h1 >Places I've Been</h1>
     </div>
 
@@ -22,36 +23,26 @@
       <img src="img/usa25.gif" alt="usa map" id="usa-map">
     </div>
 
-    <div class="">
-
-
 
       <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Add New Place</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body" >
+            <input type="text" placeholder="enter name of place" id="place-name">
+
             <span id="map-coords"></span>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="addLocation">Save Place</button>
           </div>
         </div>
       </div>
     </div>
-
-
-
-
-
-
-    </div>
-
   </body>
 </html>
