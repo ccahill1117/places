@@ -23,7 +23,6 @@
 
     <div class="our-places float-right">
       <button type="button" class="btn btn-primary" id="add-places">Add place</button>
-      <button type="button" class="btn btn-primary float-right" id="show-places">Show all</button>
 
       <div class="list">
         <ul id="theList">
@@ -34,19 +33,29 @@
 
     </div>
 
+    <div class="notes" id="notesArea">
+      <p>Notes: </p> <span id="notes-here"></span>
+
+
+    </div>
+
 
       <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add New Place</h5>
+            <h5 class="modal-title" id="exampleModalLabel">📍 Add New Place</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body" >
-            <input type="text" placeholder="enter name of place" id="place-name">
-            <input type="text" placeholder="enter name of place" id="place-notes">
+          <div class="modal-body place-desc" >
+            <input type="text" placeholder="enter name" id="place-name">
+
+
+            <textarea rows="4" placeholder="enter notes" id="place-notes"></textarea>
+
+            <!-- <input type="text" placeholder="enter notes" id="place-notes"> -->
             <span id="map-coords"></span>
           </div>
           <div class="modal-footer">

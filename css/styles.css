@@ -1,3 +1,13 @@
+ul {
+  list-style-type: none;
+  padding-left: 0;
+
+}
+
+li::before {
+  content: "📍";
+  margin-right: 10px;
+}
 
 .map {
  width: 1000px;
@@ -14,9 +24,34 @@
   width: 350px;
   margin-right: 30px;
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.place-desc input, .place-desc textarea {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .make-add {
   cursor: copy;
+}
+
+.list ul {
+  margin-top: 20px;
+}
+
+#place-notes {
+  height: 150px;
+}
+
+.notes {
+  position: absolute;
+  top: 720px;
+  margin: 30px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  height: 200px;
+  width: 940px;
 }

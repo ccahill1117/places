@@ -1,8 +1,8 @@
 
 function Place (name, location, notes) {
     this.name = name,
-    this.location = location,
-    this.notes = notes
+    this.location = location, //id
+    this.notes = notes // haven't added anyhting
 }
 
 function ScrapBook() {
@@ -14,6 +14,8 @@ ScrapBook.prototype.addPlace = function(place) {
   this.places.push(place);
   place.id = this.assignId();
   this.listPlaces();
+  this.showPlaces();
+
 }
 
 ScrapBook.prototype.assignId = function() {
@@ -21,18 +23,33 @@ ScrapBook.prototype.assignId = function() {
 }
 
 ScrapBook.prototype.showPlaces = function() {
+  // this method adds pins to the map based on the places array
   var imageOffset = 30;
   $("#usa-map").empty();
-  this.places.forEach(function(dot) {
-    var imageDot = '<img src="img/pin.png" style="position: fixed; top:'+(dot.location.y-imageOffset)+'px; left: '+(dot.location.x-imageOffset)+'px;" id="'+ dot.id+'">';
+
+  this.places.forEach(function(place) {
+
+    onDotHover = function() {
+      $("#notesArea span").empty();
+      $("li#list-"+place.id).css('font-weight','700');
+      $("#notesArea span").text(place.notes);
+    }
+    offDotHover = function() {
+      $("li#list-"+place.id).css('font-weight','400');
+      $("#notesArea span").empty();
+    }
+
+    var imageDot = '<img src="img/pin.png" style="position: fixed; top:'+(place.location.y-imageOffset)+'px; left: '+(place.location.x-imageOffset)+'px;" id="'+ place.id+'">';
+
     $("#usa-map").prepend(imageDot);
+    $("img#"+place.id).hover(onDotHover,offDotHover);
   })
 }
 
 ScrapBook.prototype.listPlaces = function() {
   $("#theList").empty();
   this.places.forEach(function(place) {
-    
+
     onDotHover = function() {
       $("img#"+place.id).attr('src','img/pin-red.png');
     }
@@ -45,6 +62,7 @@ ScrapBook.prototype.listPlaces = function() {
   })
 }
 
+// we instantiate our ScrapBook object here- called ourPlaces
 var ourPlaces = new ScrapBook();
 
 //
