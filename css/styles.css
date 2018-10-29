@@ -9,7 +9,14 @@
  background-repeat: no-repeat;
 }
 
-#show-places {
-  position: absolute;
-  top: 800px;
+
+.our-places {
+  width: 350px;
+  margin-right: 30px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.make-add {
+  cursor: copy;
 }
