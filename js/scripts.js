@@ -1,15 +1,8 @@
-var record = []
 
-function Place (name, location) {
-  // , location, landmark, timeOfYear, notes
-    this.name = name
-    this.location = location
-    // this.location = location,
-    // this.landmark = landmark,
-    // this.timeOfYear = timeOfYear,
-    // this.notes = notes
-    console.log('new place added!')
-    console.log(record)
+function Place (name, location, notes) {
+    this.name = name,
+    this.location = location,
+    this.notes = notes
 }
 
 function ScrapBook() {
@@ -26,42 +19,44 @@ ScrapBook.prototype.assignId = function() {
   return this.currentId += 1;
 }
 
+ScrapBook.prototype.showPlaces = function() {
+  var imageOffset = 30;
+  $("#usa-map").empty();
+  this.places.forEach(function(dot) {
+    var imageDot = '<img src="img/pin.png" style="position: fixed; top:'+(dot.location.y-imageOffset)+'px; left: '+(dot.location.x-imageOffset)+'px;">';
+    $("#usa-map").prepend(imageDot);
+  })
+
+}
+
+var ourPlaces = new ScrapBook();
+//
 
 $(function() {
-  $("#test").click(function(event) {
-    $("#addLocation").on( "click" , function() {console.log('added')});
-  });
 
+  $("#show-places").click(function() {
+    ourPlaces.showPlaces();
+  })
 
   $("#usa-map").click(function(event) {
+    $("#place-name").val("");
+    $("#place-notes").val("");
 
     var capturedCoords = {x: event.clientX, y:event.clientY};
     var range = 13;
-    // var oregonX = 118 ;
-    // var oregonY = 243;
 
-    // console.log(capturedCoords)
-
-    // $("#map-coords").text(modalText);
     $("#exampleModal").modal();
 
-    $("#addLocation").click(function() {
-      $("#place-name").val("");
+    $("#addLocation").click(function addLocationButton() {
+      var placeName = $("#place-name").val();
+      var placeNotes = $("#place-notes").val();
 
-      var newPlace = $("#place-name").val()
-      console.log(newPlace)
+      ourPlaces.addPlace(new Place(placeName, capturedCoords, placeNotes))
 
-      record.push(new Place(newPlace, capturedCoords));
-      $("#addLocation").off( "click" );
-
-
+      $("#addLocation").off("click", addLocationButton);
     });
 
 
-
-
-
-    // if (event.clientX > oregonX - range &&  event.clientX < oregonX + range && event.clientY > oregonY - range &&  event.clientY < oregonY + range)
   })
 
 })

@@ -1,12 +1,15 @@
 
 .map {
-  /* display: none; */
  width: 1000px;
+ height: 685px;
  position: absolute;
- top: 60px;
+ top: 55px;
+ background-image: url('../img/usa25.gif');
+ background-size: contain;
+ background-repeat: no-repeat;
 }
 
-#usa-map {
-  width: 100%;
-
+#show-places {
+  position: absolute;
+  top: 800px;
 }
